@@ -29,62 +29,134 @@ $data = mysqli_query($koneksi, "SELECT * FROM registrasi_beasiswa");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Hasil Pendaftaran</title>
+
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f9;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 1000px;
+        margin: 40px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .nav a {
+        margin: 0 15px;
+        text-decoration: none;
+        color: #007bff;
+        font-weight: bold;
+    }
+
+    .nav a:hover {
+        text-decoration: underline;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th {
+        background: #007bff;
+        color: white;
+        padding: 10px;
+    }
+
+    td {
+        padding: 10px;
+        text-align: center;
+    }
+
+    tr:nth-child(even) {
+        background: #f2f2f2;
+    }
+
+    tr:hover {
+        background: #e9ecef;
+    }
+
+    a.file-link {
+        color: #28a745;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    a.file-link:hover {
+        text-decoration: underline;
+    }
+    </style>
 </head>
 
 <body>
-    <table border="1" width="80%">
-        <tr>
-            <td colspan="3">Pilihan beasiswa</td>
-            <td colspan="3">
-                <a href="index.php">Daftar Beasiswa</a>
-            </td>
 
-            <td colspan="3">
-                <a href="hasil.php">Hasil</a>
-            </td>
-        </tr>
-        <td colspan="9">
-            <h2 style="text-align:center;">Hasil Pendaftaran Beasiswa</h2>
-        </td>
-        <tr>
-        <tr>
-            <th>No</th>
-            <th>Nama</th>
-            <th>Email</th>
-            <th>Nomor HP</th>
-            <th>Semester</th>
-            <th>IPK</th>
-            <th>Beasiswa</th>
-            <th>Berkas</th>
-            <th>Status Ajuan</th>
-        </tr>
+    <div class="container">
 
-        <?php
-            $no = 1;
-              while ($row = mysqli_fetch_array($data)){
-            ?>
+        <div class="nav">
+            <a href="index.php">Daftar Beasiswa</a>
+            <a href="hasil.php">Hasil</a>
+        </div>
 
-        <tr>
-            <td><?php echo $no++; ?></td>
-            <td><?php echo $row['nama']; ?></td>
-            <td><?php echo $row['email']; ?></td>
-            <td><?php echo $row['nomor_hp']; ?></td>
-            <td><?php echo $row['semester']; ?></td>
-            <td><?php echo $row['ipk']; ?></td>
-            <td><?php echo $row['beasiswa']; ?></td>
-            <td>
-                <a href="../upload/<?php echo $row['upload_berkas']; ?>" target="_blank">
-                    Lihat Berkas
-                </a>
-            </td>
-            <td><?php echo $row['status_ajuan']; ?></td>
-        </tr>
+        <h2>Hasil Pendaftaran Beasiswa</h2>
 
-        <?php
-              }
-            ?>
-    </table>
+        <table>
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Email</th>
+                <th>Nomor HP</th>
+                <th>Semester</th>
+                <th>IPK</th>
+                <th>Beasiswa</th>
+                <th>Berkas</th>
+                <th>Status Ajuan</th>
+            </tr>
+
+            <?php
+    $no = 1;
+    while ($row = mysqli_fetch_array($data)){
+    ?>
+
+            <tr>
+                <td><?= $no++; ?></td>
+                <td><?= $row['nama']; ?></td>
+                <td><?= $row['email']; ?></td>
+                <td><?= $row['nomor_hp']; ?></td>
+                <td><?= $row['semester']; ?></td>
+                <td><?= $row['ipk']; ?></td>
+                <td><?= $row['beasiswa']; ?></td>
+                <td>
+                    <a class="file-link" href="../upload/<?= $row['upload_berkas']; ?>" target="_blank">
+                        Lihat Berkas
+                    </a>
+                </td>
+                <td><?= $row['status_ajuan']; ?></td>
+            </tr>
+
+            <?php } ?>
+
+        </table>
+
+    </div>
+
 </body>
 
 </html>
