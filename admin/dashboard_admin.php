@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+if($_SESSION['role'] != 'admin'){
+    header("Location: ../login.php");
+    exit();
+}
+
 include "../koneksi/config.php";
 
 if(isset($_POST['accept'])){
