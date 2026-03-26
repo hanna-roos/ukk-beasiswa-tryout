@@ -173,8 +173,16 @@ if($ipk<3){
                 <label>Pilihan Beasiswa</label>
                 <select name="beasiswa" <?php echo $disabled?> required>
                     <option value="">Pilih Beasiswa</option>
-                    <option value="beasiswa_nasional">Beasiswa Nasional</option>
-                    <option value="beasiswa_internasional">Beasiswa Internasional</option>
+                    <?php
+                    if($ipk <= 3.2){
+                        echo '<option value="beasiswa_nasional">Beasiswa Nasional</option>';
+                    }elseif($ipk > 3.2){
+                        echo '<option value="beasiswa_nasional">Beasiswa Nasional</option>';
+                        echo '<option value="beasiswa_internasional">Beasiswa Internasional</option>';
+                    }else{
+                        echo $disabled;
+                    }
+                    ?>
                 </select>
             </div>
 

@@ -131,24 +131,24 @@ $data = mysqli_query($koneksi, "SELECT * FROM registrasi_beasiswa");
             </tr>
 
             <?php
-    $no = 1;
-    while ($row = mysqli_fetch_array($data)){
-    ?>
+            $no = 1;
+            while ($row = mysqli_fetch_array($data)){
+            ?>
 
             <tr>
-                <td><?= $no++; ?></td>
-                <td><?= $row['nama']; ?></td>
-                <td><?= $row['email']; ?></td>
-                <td><?= $row['nomor_hp']; ?></td>
-                <td><?= $row['semester']; ?></td>
-                <td><?= $row['ipk']; ?></td>
-                <td><?= $row['beasiswa']; ?></td>
+                <td><?php echo $no++; ?></td>
+                <td><?php echo $row['nama']; ?></td>
+                <td><?php echo $row['email']; ?></td>
+                <td><?php echo $row['nomor_hp']; ?></td>
+                <td><?php echo $row['semester']; ?></td>
+                <td><?php echo $row['ipk']; ?></td>
+                <td><?php echo $row['beasiswa']; ?></td>
                 <td>
-                    <a class="file-link" href="../upload/<?= $row['upload_berkas']; ?>" target="_blank">
+                    <a class="file-link" href="../upload/<?php echo $row['upload_berkas']; ?>" target="_blank">
                         Lihat Berkas
                     </a>
                 </td>
-                <td><?= $row['status_ajuan']; ?></td>
+                <td><?php echo $row['status_ajuan']; ?></td>
             </tr>
 
             <?php } ?>

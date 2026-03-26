@@ -46,22 +46,6 @@ $data = mysqli_query($koneksi, "SELECT * FROM registrasi_beasiswa");
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
-    .nav {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    .nav a {
-        margin: 0 15px;
-        text-decoration: none;
-        color: #007bff;
-        font-weight: bold;
-    }
-
-    .nav a:hover {
-        text-decoration: underline;
-    }
-
     h2 {
         text-align: center;
         margin-bottom: 20px;
@@ -123,11 +107,6 @@ $data = mysqli_query($koneksi, "SELECT * FROM registrasi_beasiswa");
 <body>
 
     <div class="container">
-
-        <div class="nav">
-            <a href="index.php">Daftar Beasiswa</a>
-            <a href="hasil.php">Hasil</a>
-        </div>
 
         <h2>Hasil Pendaftaran Beasiswa</h2>
 
